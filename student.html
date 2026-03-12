@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Student Registration Practice Form</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:40px;
+}
+
+.section{
+border:1px solid #ccc;
+padding:20px;
+margin-bottom:30px;
+}
+
+input,select,textarea{
+margin-top:5px;
+margin-bottom:10px;
+padding:5px;
+}
+
+.dragbox{
+width:120px;
+height:120px;
+background:skyblue;
+text-align:center;
+line-height:120px;
+cursor:grab;
+}
+
+.dropzone{
+width:160px;
+height:160px;
+border:2px dashed black;
+text-align:center;
+line-height:160px;
+}
+
+.scrollbox{
+width:300px;
+height:120px;
+overflow:auto;
+border:1px solid black;
+padding:10px;
+}
+
+.bigcontent{
+height:400px;
+}
+
+table{
+border-collapse:collapse;
+}
+
+td,th{
+border:1px solid black;
+padding:8px;
+}
+
+</style>
+
+<script>
+
+function allowDrop(ev){
+ev.preventDefault();
+}
+
+function drag(ev){
+ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev){
+ev.preventDefault();
+var data=ev.dataTransfer.getData("text");
+ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Student Registration Form</h1>
+
+<form>
+
+<div class="section">
+
+<h2>Personal Information</h2>
+
+First Name<br>
+<input type="text" id="firstName" placeholder="Enter First Name">
+
+<br>
+
+Last Name<br>
+<input type="text" id="lastName" placeholder="Enter Last Name">
+
+<br>
+
+Email<br>
+<input type="email" id="email" placeholder="Enter Email">
+
+<br>
+
+Password<br>
+<input type="password" id="password">
+
+<br>
+
+Date of Birth<br>
+<input type="date" id="dob">
+
+</div>
+
+<div class="section">
+
+<h2>Gender</h2>
+
+<label><input type="radio" name="gender" value="male"> Male</label>
+
+<label><input type="radio" name="gender" value="female"> Female</label>
+
+<label><input type="radio" name="gender" value="other"> Other</label>
+
+</div>
+
+<div class="section">
+
+<h2>Hobbies</h2>
+
+<label><input type="checkbox" value="sports"> Sports</label>
+
+<label><input type="checkbox" value="music"> Music</label>
+
+<label><input type="checkbox" value="reading"> Reading</label>
+
+</div>
+
+<div class="section">
+
+<h2>Country</h2>
+
+<select id="country">
+
+<option value="">Select Country</option>
+<option value="india">India</option>
+<option value="usa">USA</option>
+<option value="uk">UK</option>
+
+</select>
+
+</div>
+
+<div class="section">
+
+<h2>Skills (Multi Select)</h2>
+
+<select id="skills" multiple>
+
+<option value="python">Python</option>
+<option value="java">Java</option>
+<option value="playwright">Playwright</option>
+<option value="selenium">Selenium</option>
+
+</select>
+
+</div>
+
+<div class="section">
+
+<h2>Upload Resume</h2>
+
+<input type="file" id="resumeUpload">
+
+</div>
+
+<div class="section">
+
+<h2>About Yourself</h2>
+
+<textarea id="about" rows="4" cols="40"></textarea>
+
+</div>
+
+<div class="section">
+
+<h2>Skill Level Slider</h2>
+
+<input type="range" min="0" max="10" value="5" id="skillSlider">
+
+</div>
+
+<div class="section">
+
+<h2>Drag Course To Enrollment Box</h2>
+
+<div id="course1" draggable="true" ondragstart="drag(event)" class="dragbox">
+Playwright
+</div>
+
+<br><br>
+
+<div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+Drop Course Here
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Scrollable Area</h2>
+
+<div class="scrollbox">
+
+<div class="bigcontent">
+
+<p>Scroll Down</p>
+
+<button id="scrollBtn">Submit After Scroll</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Course Table</h2>
+
+<table id="courseTable">
+
+<tr>
+<th>Course</th>
+<th>Duration</th>
+</tr>
+
+<tr>
+<td>Playwright</td>
+<td>3 Months</td>
+</tr>
+
+<tr>
+<td>Selenium</td>
+<td>2 Months</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+
+<button type="submit" id="submitBtn">Register</button>
+
+<button type="reset">Reset</button>
+
+</div>
+
+</form>
+
+</body>
+
+</html>
