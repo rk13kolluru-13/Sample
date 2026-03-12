@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Playwright Training Demo</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:40px;
+}
+
+.section{
+border:1px solid #ccc;
+padding:20px;
+margin-bottom:30px;
+}
+
+.box{
+width:100px;
+height:100px;
+background:skyblue;
+display:inline-block;
+margin:10px;
+text-align:center;
+line-height:100px;
+cursor:grab;
+}
+
+.dropzone{
+width:150px;
+height:150px;
+border:2px dashed black;
+display:inline-block;
+margin:10px;
+text-align:center;
+line-height:150px;
+}
+
+.scroll-area{
+width:300px;
+height:150px;
+overflow:auto;
+border:1px solid black;
+padding:10px;
+}
+
+.long-content{
+height:500px;
+}
+
+table{
+border-collapse:collapse;
+}
+
+td,th{
+border:1px solid black;
+padding:8px;
+}
+
+</style>
+
+<script>
+
+function allowDrop(ev){
+ev.preventDefault();
+}
+
+function drag(ev){
+ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev){
+ev.preventDefault();
+var data=ev.dataTransfer.getData("text");
+ev.target.appendChild(document.getElementById(data));
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Playwright Automation Training Page</h1>
+
+<!-- TEXTBOX -->
+<div class="section">
+
+<h2>Textbox</h2>
+
+<input type="text" id="username" placeholder="Enter username">
+
+</div>
+
+<!-- BUTTON -->
+<div class="section">
+
+<h2>Button</h2>
+
+<button id="loginBtn">Login</button>
+
+</div>
+
+<!-- CHECKBOX -->
+<div class="section">
+
+<h2>Checkbox</h2>
+
+<label><input type="checkbox" value="sports"> Sports</label><br>
+<label><input type="checkbox" value="music"> Music</label><br>
+<label><input type="checkbox" value="movies"> Movies</label>
+
+</div>
+
+<!-- RADIO -->
+<div class="section">
+
+<h2>Radio Button</h2>
+
+<label><input type="radio" name="gender" value="male"> Male</label><br>
+<label><input type="radio" name="gender" value="female"> Female</label>
+
+</div>
+
+<!-- SINGLE SELECT -->
+<div class="section">
+
+<h2>Single Select Dropdown</h2>
+
+<select id="country">
+
+<option value="">Select Country</option>
+<option value="india">India</option>
+<option value="usa">USA</option>
+<option value="uk">UK</option>
+
+</select>
+
+</div>
+
+<!-- MULTI SELECT -->
+<div class="section">
+
+<h2>Multi Select Dropdown</h2>
+
+<select id="skills" multiple>
+
+<option value="python">Python</option>
+<option value="java">Java</option>
+<option value="playwright">Playwright</option>
+<option value="selenium">Selenium</option>
+
+</select>
+
+</div>
+
+<!-- FILE UPLOAD -->
+<div class="section">
+
+<h2>File Upload</h2>
+
+<input type="file" id="fileUpload">
+
+</div>
+
+<!-- DRAG DROP -->
+<div class="section">
+
+<h2>Drag and Drop</h2>
+
+<div id="drag1" class="box" draggable="true" ondragstart="drag(event)">
+Drag Me
+</div>
+
+<div class="dropzone" ondrop="drop(event)" ondragover="allowDrop(event)">
+Drop Here
+</div>
+
+</div>
+
+<!-- SLIDER -->
+<div class="section">
+
+<h2>Slider</h2>
+
+<input type="range" min="0" max="100" value="30" id="volume">
+
+</div>
+
+<!-- TABLE -->
+<div class="section">
+
+<h2>Table</h2>
+
+<table id="userTable">
+
+<tr>
+<th>Name</th>
+<th>Role</th>
+</tr>
+
+<tr>
+<td>John</td>
+<td>Admin</td>
+</tr>
+
+<tr>
+<td>Mary</td>
+<td>User</td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
